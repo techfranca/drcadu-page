@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Google Tag Manager (non-blocking) -->
+    <!-- Google Tag Manager (interaction-only) -->
     <script>
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
@@ -18,12 +18,7 @@
             s.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + (l !== 'dataLayer' ? '&l=' + l : '');
             d.head.appendChild(s);
         }
-        if ('requestIdleCallback' in w) {
-            w.requestIdleCallback(loadGtm, { timeout: 3000 });
-        } else {
-            w.setTimeout(loadGtm, 2000);
-        }
-        ['scroll', 'pointerdown', 'keydown', 'touchstart'].forEach(function(evt) {
+        ['pointerdown', 'keydown', 'touchstart', 'click'].forEach(function(evt) {
             w.addEventListener(evt, loadGtm, { once: true, passive: true });
         });
     })(window, document, 'dataLayer', 'GTM-TXT2BF3H');
@@ -49,11 +44,39 @@
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-    <link rel="preload" as="image" href="assets/images/dr_cadu.png" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/images/dr_cadu.png" imagesrcset="assets/images/dr_cadu.png 500w" imagesizes="(max-width: 767px) 70vw, 500px" fetchpriority="high">
     
     <title>AngioGold | Tratamento de Varizes com Laser em Belo Horizonte</title>
     
-    <link rel="stylesheet" href="styles.css">
+    <style>
+    :root{--wine:#6A1A1D;--cream-light:#FBF7F2;--gray-dark:#333333;--gray-light:#999999;--cta-green:#25D366;--space-xs:.5rem;--space-sm:1rem;--space-md:1.5rem;--space-lg:2rem;--space-xl:3rem;--radius-sm:4px;--radius-md:8px;--radius-lg:16px}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;font-size:16px;line-height:1.6;color:var(--gray-dark);background:var(--cream-light);overflow-x:hidden}
+    img{max-width:100%;height:auto;display:block}
+    a{text-decoration:none;color:inherit}
+    .header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(251,247,242,.98);border-bottom:1px solid rgba(160,116,43,.1);padding:var(--space-sm) 0}
+    .header-container{display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;padding:0 var(--space-md)}
+    .logo{display:flex;align-items:center}
+    .logo-img{height:48px;width:auto;object-fit:contain}
+    .header-cta{display:none}
+    .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;padding-top:80px;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,var(--cream-light) 0%,#EFD8BD 50%,rgba(205,170,93,.1) 100%);z-index:-1}
+    .hero-content{flex:1;display:flex;flex-direction:column;justify-content:center;padding:var(--space-xl) var(--space-md);max-width:1200px;margin:0 auto;width:100%}
+    h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2rem,5vw,3.5rem);line-height:1.2;letter-spacing:-.02em;color:var(--wine)}
+    .hero-subtitle{margin-top:var(--space-sm)}
+    .hero-image{margin-top:var(--space-lg)}
+    .hero-image-wrapper{border-radius:var(--radius-lg);padding:var(--space-xs);border:1px solid rgba(160,116,43,.2)}
+    .hero-image-wrapper img{border-radius:var(--radius-md);width:100%;max-height:350px;object-fit:cover;object-position:top center}
+    .btn-primary{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.25rem;color:#fff;background:var(--cta-green);border-radius:var(--radius-sm);margin-top:var(--space-sm)}
+    .hero-scroll-indicator{display:flex;flex-direction:column;align-items:center;padding-bottom:var(--space-lg);color:var(--gray-light);font-size:.75rem;letter-spacing:.1em}
+    .whatsapp-float{position:fixed;bottom:var(--space-md);right:var(--space-md);z-index:99;display:flex;align-items:center;gap:var(--space-xs);padding:.875rem 1.25rem;color:#fff;background:#25D366;border-radius:50px}
+    .whatsapp-float svg{width:24px;height:24px;flex-shrink:0}
+    .whatsapp-float span{font-size:.875rem;font-weight:500;white-space:nowrap}
+    @media (min-width:768px){.header-cta{display:block;padding:.625rem 1.25rem;font-size:.875rem;font-weight:500;color:#fff;background:var(--cta-green);border-radius:var(--radius-sm)}.hero-content{flex-direction:row;align-items:center;gap:var(--space-xl)}.hero-text{flex:1;max-width:55%}.hero-image{display:block;flex:0 0 40%;max-width:380px;margin-top:0}}
+    </style>
+    <link rel="preload" as="style" href="styles.css">
+    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -104,7 +127,7 @@
                 </div>
                 <div class="hero-image">
                     <div class="hero-image-wrapper">
-                        <img src="assets/images/dr_cadu.png" alt="Dr. Carlos Eduardo realizando tratamento a laser para varizes" loading="eager" decoding="async" fetchpriority="high" width="500" height="600">
+                        <img src="assets/images/dr_cadu.png" srcset="assets/images/dr_cadu.png 500w" sizes="(max-width: 767px) 70vw, 500px" alt="Dr. Carlos Eduardo realizando tratamento a laser para varizes" loading="eager" decoding="async" fetchpriority="high" width="500" height="600">
                         <div class="hero-image-accent"></div>
                     </div>
                 </div>

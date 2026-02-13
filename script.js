@@ -37,7 +37,7 @@
 
     // Apply fade-in animation to sections
     function initAnimations() {
-        if (prefersReducedMotion) return;
+        if (prefersReducedMotion || isSmallScreen) return;
         
         const animatedElements = document.querySelectorAll(
             '.section-header, .queixa-card, .step, .feature, .tratamento-card, ' +
@@ -219,6 +219,8 @@
     // HIDE SCROLL INDICATOR ON SCROLL
     // ===================================
     function initScrollIndicator() {
+        if (isSmallScreen) return;
+        
         var indicator = document.querySelector('.hero-scroll-indicator');
         if (!indicator) return;
         
@@ -275,7 +277,9 @@
         
         window.requestAnimationFrame(function() {
             initHeaderScroll();
-            initScrollIndicator();
+            if (!isSmallScreen) {
+                initScrollIndicator();
+            }
         });
         
         runWhenIdle(function() {
