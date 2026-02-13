@@ -4,12 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-TXT2BF3H');</script>
+    <!-- Google Tag Manager (non-blocking) -->
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+    (function(w, d, l, i) {
+        var loaded = false;
+        function loadGtm() {
+            if (loaded) return;
+            loaded = true;
+            var s = d.createElement('script');
+            s.async = true;
+            s.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + (l !== 'dataLayer' ? '&l=' + l : '');
+            d.head.appendChild(s);
+        }
+        if ('requestIdleCallback' in w) {
+            w.requestIdleCallback(loadGtm, { timeout: 3000 });
+        } else {
+            w.setTimeout(loadGtm, 2000);
+        }
+        ['scroll', 'pointerdown', 'keydown', 'touchstart'].forEach(function(evt) {
+            w.addEventListener(evt, loadGtm, { once: true, passive: true });
+        });
+    })(window, document, 'dataLayer', 'GTM-TXT2BF3H');
+    </script>
     <!-- End Google Tag Manager -->
     
     <meta name="description" content="Tratamento de varizes e vasinhos em Belo Horizonte. Consulta com angiologista especializado. Clínica AngioGold no Belvedere - tecnologia a laser, atendimento humanizado.">
@@ -27,8 +45,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <!-- Fontes -->
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Fontes (non-blocking) -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
+    <link rel="preload" as="image" href="assets/images/dr_cadu.png" fetchpriority="high">
     
     <title>AngioGold | Tratamento de Varizes com Laser em Belo Horizonte</title>
     
@@ -83,7 +104,7 @@
                 </div>
                 <div class="hero-image">
                     <div class="hero-image-wrapper">
-                        <img src="assets/images/dr_cadu.png" alt="Dr. Carlos Eduardo realizando tratamento a laser para varizes" loading="eager" width="500" height="600">
+                        <img src="assets/images/dr_cadu.png" alt="Dr. Carlos Eduardo realizando tratamento a laser para varizes" loading="eager" decoding="async" fetchpriority="high" width="500" height="600">
                         <div class="hero-image-accent"></div>
                     </div>
                 </div>
@@ -493,7 +514,7 @@
                 <div class="resultado-showcase">
                     <div class="resultado-item">
                         <div class="resultado-label">Antes</div>
-                        <img src="assets/images/antes.png" alt="Antes do tratamento - perna com varizes" loading="lazy" width="400" height="500">
+                        <img src="assets/images/antes.png" alt="Antes do tratamento - perna com varizes" loading="lazy" decoding="async" width="400" height="500">
                     </div>
                     <div class="resultado-divider">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -502,7 +523,7 @@
                     </div>
                     <div class="resultado-item">
                         <div class="resultado-label">Depois</div>
-                        <img src="assets/images/depois.png" alt="Depois do tratamento - resultado do procedimento" loading="lazy" width="400" height="500">
+                        <img src="assets/images/depois.png" alt="Depois do tratamento - resultado do procedimento" loading="lazy" decoding="async" width="400" height="500">
                     </div>
                 </div>
                 
@@ -657,7 +678,7 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <a href="#" class="logo">
-                        <img src="assets/images/logo-angiogold.png" alt="AngioGold - Angiologia Estética" class="logo-img logo-img-footer">
+                        <img src="assets/images/logo-angiogold.png" alt="AngioGold - Angiologia Estética" class="logo-img logo-img-footer" loading="lazy" decoding="async">
                     </a>
                     <p>Angiologia Estética em Belo Horizonte</p>
                 </div>

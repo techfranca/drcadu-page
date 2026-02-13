@@ -5,6 +5,17 @@
 
 (function() {
     'use strict';
+    
+    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var isSmallScreen = window.matchMedia('(max-width: 1024px)').matches;
+    
+    function runWhenIdle(task, timeout) {
+        if ('requestIdleCallback' in window) {
+            window.requestIdleCallback(task, { timeout: timeout || 2000 });
+        } else {
+            setTimeout(task, 1);
+        }
+    }
 
     // ===================================
     // INTERSECTION OBSERVER FOR ANIMATIONS
@@ -26,6 +37,8 @@
 
     // Apply fade-in animation to sections
     function initAnimations() {
+        if (prefersReducedMotion) return;
+        
         const animatedElements = document.querySelectorAll(
             '.section-header, .queixa-card, .step, .feature, .tratamento-card, ' +
             '.medico-card, .resultado-item, .faq-item, .clinica-stat, .google-rating'
@@ -179,6 +192,8 @@
     // PARALLAX EFFECT FOR HERO
     // ===================================
     function initParallax() {
+        if (prefersReducedMotion || isSmallScreen) return;
+        
         var heroImage = document.querySelector('.hero-image-wrapper img');
         if (!heroImage) return;
         
@@ -226,7 +241,7 @@
     // FORM TRACKING (for analytics)
     // ===================================
     function initClickTracking() {
-        var whatsappLinks = document.querySelectorAll('a[href*="wa.me"]');
+        var whatsappLinks = document.querySelectorAll('a[href*="wa.me"], a[href*="wa.link"]');
         
         whatsappLinks.forEach(function(link) {
             link.addEventListener('click', function() {
@@ -254,15 +269,21 @@
     // INITIALIZE ALL FUNCTIONS
     // ===================================
     function init() {
-        initAnimations();
-        initHeaderScroll();
         initSmoothScroll();
         initFaqAccordion();
-        initWhatsAppButton();
-        initCounterAnimation();
-        initParallax();
-        initScrollIndicator();
         initClickTracking();
+        
+        window.requestAnimationFrame(function() {
+            initHeaderScroll();
+            initScrollIndicator();
+        });
+        
+        runWhenIdle(function() {
+            initAnimations();
+            initWhatsAppButton();
+            initCounterAnimation();
+            initParallax();
+        }, 2500);
     }
 
     // Run on DOM ready
